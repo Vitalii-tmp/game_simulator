@@ -1,4 +1,3 @@
 ﻿  Source.cpp
-D:\my thnk\Fugas\first game\game_simulator\Project1\Project1\Source.cpp(86,10): error C2059: синтаксическая ошибка: ->
-D:\my thnk\Fugas\first game\game_simulator\Project1\Project1\Source.cpp(86,26): error C2238: непредвиденные лексемы перед ";"
-D:\my thnk\Fugas\first game\game_simulator\Project1\Project1\Source.cpp(96,2): warning C4551: в вызове функции отсутствует список аргументов
+D:\my thnk\Fugas\first game\game_simulator\Project1\Project1\Source.cpp(100,2): warning C4551: в вызове функции отсутствует список аргументов
+  Project1.vcxproj -> D:\my thnk\Fugas\first game\game_simulator\Project1\Debug\Project1.exe
