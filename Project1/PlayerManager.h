@@ -1,26 +1,70 @@
 #pragma once
 #include<iostream>
+#include<vector>
+#include "Players.h"
 class PlayerManager
 {
-	void CreatePlayer(std::string Name, std::string Id, int Rank)       //створити гравц€;
-	{
+	std::vector<Players> plrs_list; //створюЇмо список гравц≥в в вектор≥
+public:
 
+	void CreatePlayer(int Id, std::string Name)       //створити гравц€;
+	{
+		Players player(Id, Name);
+
+		plrs_list.push_back(player);//записуЇмо гравц€ в к≥нець вектору
+	}
+
+	Players GetPlayerByName(std::string player_name)	  //повернути гравц€ по ≥мен≥
+	{//€кщо ≥м'€ Ї в списку то повертамо гравц€
+		for (Players element : plrs_list) {
+			if (element.GetName() == player_name) {
+				return element;
+			}
+			else std::cout << "ERROR - Player not found !\n";
+		}
 
 	}
-	void GetPlayerByName(std::string args)	  //показати гравц€ по ≥мен≥
-	{
 
+	Players GetPlayerById(int player_id) //повернути гравц€ по ≥д
+	{//€кщо id Ї в списку то повертамо гравц€
+		
+			for (Players element : plrs_list) {
+				if (element.GetId() == player_id) {
+					return element;
+				}
+				else std::cout << "ERROR - Player not found !\n";
+			}
+		
 	}
-	void GetPlayerById(std::string args) //показати гравц€ по ≥д
-	{
 
-	}
-	void DeletePlayer(std::string args) // видалити гравц€
-	{
+	void DeletePlayer(std::string name_player_del) // видалити гравц€
+	{//€кщо в вектор≥ Ї дане ≥м'€ то видал€Їмо гравц€ на цьому м≥сц≥
 
-	}
-	void ShowPlayerInfo(std::string args) // ≥нф про гравц€
-	{
+		
+			int kounter = 0;//л≥чильник
+			for (Players element : plrs_list) {
+				++kounter;
+				if (element.GetName() == name_player_del) {
+
+					plrs_list.erase(plrs_list.begin() + kounter);
+					
+				}
+				else std::cout << "ERROR - Player not found !\n";
+			
+			}
+		}
+	
+	
+	void ShowPlayerInfo(Players player) // виводить ≥нф про гравц€
+	{//€кщо дане ≥м'€ ≥снуЇ то виводить ≥нформац≥ю про цього гравц€
+		for (Players element : plrs_list) {
+			
+				std::cout <<" Player id: " << player.GetId()<<std::endl;
+				std::cout << " Player name: " << player.GetName() << std::endl;
+				std::cout << " Player Rank: " << player.GetRank() << std::endl;
+			
+			
+		}
 
 	}
 };
