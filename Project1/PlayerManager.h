@@ -4,23 +4,23 @@
 #include "Players.h"
 class PlayerManager
 {
-	std::vector<Players> plrs_list; //створюЇмо список гравц≥в в вектор≥
+	std::vector<Players> hero_list; //створюЇмо список гравц≥в в вектор≥
 public:
 
 	void CreatePlayer(int Id, std::string Name)       //створити гравц€;
 	{
 		Players player(Id, Name);
 
-		plrs_list.push_back(player);//записуЇмо гравц€ в к≥нець вектору
+		hero_list.push_back(player);//записуЇмо гравц€ в к≥нець вектору
 	}
 
 	Players GetPlayerByName(std::string player_name)	  //повернути гравц€ по ≥мен≥
 	{//€кщо ≥м'€ Ї в списку то повертамо гравц€
-		for (Players element : plrs_list) {
+		for (Players element : hero_list) {
 			if (element.GetName() == player_name) {
 				return element;
 			}
-			else std::cout << "ERROR - Player not found !\n";
+			
 		}
 
 	}
@@ -28,11 +28,11 @@ public:
 	Players GetPlayerById(int player_id) //повернути гравц€ по ≥д
 	{//€кщо id Ї в списку то повертамо гравц€
 		
-			for (Players element : plrs_list) {
+			for (Players element : hero_list) {
 				if (element.GetId() == player_id) {
 					return element;
 				}
-				else std::cout << "ERROR - Player not found !\n";
+			
 			}
 		
 	}
@@ -42,26 +42,29 @@ public:
 
 		
 			int kounter = 0;//л≥чильник
-			for (Players element : plrs_list) {
+			for (Players element : hero_list) {
 				++kounter;
 				if (element.GetName() == name_player_del) {
 
-					plrs_list.erase(plrs_list.begin() + kounter);
+					hero_list.erase(hero_list.begin() + kounter);
 					
 				}
-				else std::cout << "ERROR - Player not found !\n";
-			
+				else {
+					std::cout << "ERROR - Player not found !\n";
+					
+				}
 			}
 		}
 	
 	
 	void ShowPlayerInfo(Players player) // виводить ≥нф про гравц€
 	{//€кщо дане ≥м'€ ≥снуЇ то виводить ≥нформац≥ю про цього гравц€
-		for (Players element : plrs_list) {
+		for (Players element : hero_list) {
 			
 				std::cout <<" Player id: " << player.GetId()<<std::endl;
 				std::cout << " Player name: " << player.GetName() << std::endl;
 				std::cout << " Player Rank: " << player.GetRank() << std::endl;
+			
 			
 			
 		}

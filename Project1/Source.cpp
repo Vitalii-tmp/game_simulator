@@ -1,7 +1,9 @@
 #include<iostream>
 #include<conio.h>
 #include "Players.h"
-#include "Playermanager.h"
+#include "PlayerManager.h"
+#include "Hero.h"
+#include "HeroManager.h"
 //
 //class Player {
 //private:
@@ -94,19 +96,20 @@
 //};
 
 int main() {
-	Players first(12312, "Vova");
+	
 	PlayerManager tmp;
-	std::string aaa;
-	std::cin >> aaa;
+	std::string name;
+	std::cin >> name;
 	tmp.CreatePlayer(123, "Vova");
-	tmp.ShowPlayerInfo(tmp.GetPlayerByName(aaa));
+	tmp.ShowPlayerInfo(tmp.GetPlayerByName(name));
 	int id;
 	std::cout << "dkluufsuugfuisgduygdf\n";
 	std::cin >> id;
 	tmp.ShowPlayerInfo(tmp.GetPlayerById(id));
-
-
-
+	HeroManager first;
+	first.CreateHero(12345,100,12,"vovochka");
+	first.ShowHeroInfo(first.GetHeroByName("vovochka"));
+	//int Id, int HP, int Damage, std::string Name
 
 	_getch;
 	return 0;
