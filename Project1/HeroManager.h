@@ -57,16 +57,14 @@ public:
 
 	void ShowHeroInfo(Hero hero) // виводить інф про hero
 	{//якщо даний герой існує то виводить інформацію про цього hero
-		for (Hero element : hero_list) {
-
-			std::cout << " Hero id: " << hero.GetId() << std::endl;
-			std::cout << " Hero name: " << hero.GetName() << std::endl;
-			std::cout << " Hero HP: " << hero.GetHP() << std::endl;
-			std::cout << " Hero damage: " << hero.GetDamage() << std::endl;
+		
+		std::cout << "--His hero--\n";
+			std::cout << "Hero id: " << hero.GetId() << std::endl;
+			std::cout << "Hero name: " << hero.GetName() << std::endl;
+			std::cout << "Hero HP: " << hero.GetHP() << std::endl;
+			std::cout << "Hero damage: " << hero.GetDamage() << std::endl << std::endl;
 			
 
-
-		}
 
 	}
 

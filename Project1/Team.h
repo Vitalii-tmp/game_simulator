@@ -25,10 +25,8 @@ public:
 		this->team_list = team_list;
 	}
 
-	void add_meember(std::pair<Players, Hero> member) {
-		team_list.push_back(member);
-	}
-	 
+	
+
 	std::vector<std::pair<Players, Hero>> GetTeamList() {
 		return team_list;
 	}

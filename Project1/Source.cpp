@@ -5,6 +5,9 @@
 #include "Hero.h"
 #include "HeroManager.h"
 #include "TeamMeneger.h"
+#include <ctime>
+#include "Session.h"
+#include "GameManager.h"
 //
 //class Player {
 //private:
@@ -97,23 +100,12 @@
 //};
 
 int main() {
-
-	PlayerManager tmp;
-	for (int i = 0; i < 10; i++) {
-		tmp.CreatePlayer(i, "player" + i);
-	}
-	//int Id, int HP, int Damage, std::string Name)
-	HeroManager first;
-	for (int i = 0; i < 10; i++) {
-		first.CreateHero(i + 10, rand() % 150 + i, rand() % 100 + i, "Hero" + i);
-	}
-	TeamManager teams;
+	srand(time(NULL));
+	GameManager game;
+	HeroManager hero_mn;
+	PlayerManager pl_mn;
+	game.PerformGameSession(pl_mn, hero_mn);
 	
-	
-
-
-
-
 
 
 	_getch;
