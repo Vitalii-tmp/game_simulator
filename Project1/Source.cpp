@@ -4,6 +4,7 @@
 #include "PlayerManager.h"
 #include "Hero.h"
 #include "HeroManager.h"
+#include "TeamMeneger.h"
 //
 //class Player {
 //private:
@@ -96,20 +97,24 @@
 //};
 
 int main() {
-	
+
 	PlayerManager tmp;
-	std::string name;
-	std::cin >> name;
-	tmp.CreatePlayer(123, "Vova");
-	tmp.ShowPlayerInfo(tmp.GetPlayerByName(name));
-	int id;
-	std::cout << "dkluufsuugfuisgduygdf\n";
-	std::cin >> id;
-	tmp.ShowPlayerInfo(tmp.GetPlayerById(id));
+	for (int i = 0; i < 10; i++) {
+		tmp.CreatePlayer(i, "player" + i);
+	}
+	//int Id, int HP, int Damage, std::string Name)
 	HeroManager first;
-	first.CreateHero(12345,100,12,"vovochka");
-	first.ShowHeroInfo(first.GetHeroByName("vovochka"));
-	//int Id, int HP, int Damage, std::string Name
+	for (int i = 0; i < 10; i++) {
+		first.CreateHero(i + 10, rand() % 150 + i, rand() % 100 + i, "Hero" + i);
+	}
+	TeamManager teams;
+	
+	
+
+
+
+
+
 
 	_getch;
 	return 0;

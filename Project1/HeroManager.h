@@ -69,5 +69,9 @@ public:
 		}
 
 	}
+
+	auto GetHeroList() {
+		return hero_list;
+	}
 };
 

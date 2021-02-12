@@ -1,7 +1,39 @@
 #pragma once
 #include<iostream>
+#include<vector>
+#include <string>
+#include "Players.h"
+#include "Hero.h"
+//struct player_with_hero {
+//	Players player;
+//	Hero hero;
+//
+//};
+
+
 class Team
 {
-	std::string Name;
+private:
+	std::string Name;    
+	std::vector<std::pair<Players, Hero>> team_list;
+
+public:
+	Team();
+	Team(std::string Name, std::vector<std::pair<Players, Hero>> team_list)
+	{
+		this->Name = Name;
+		this->team_list = team_list;
+	}
+
+	void add_meember(std::pair<Players, Hero> member) {
+		team_list.push_back(member);
+	}
+	 
+	std::vector<std::pair<Players, Hero>> GetTeamList() {
+		return team_list;
+	}
+
+	
+	
 };
 

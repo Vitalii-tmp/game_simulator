@@ -7,7 +7,7 @@ private:
 	 std::string Name;
 public:
 
-	
+	Hero(){}
 	Hero(int Id, int HP, int Damage ,std::string Name)
 	{
 		this->Id = Id;
