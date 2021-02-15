@@ -3,7 +3,40 @@
 class Players
 {
 private:
-	std::string Id, Name, Rank; //Id, Name, Rank ãğàâöÿ
+	std::string Name;
+	int Rank,Id;               //Id, Name, Rank ãğàâöÿ
 public:
 	Players();
+	Players(int Id, std::string Name)
+	{
+		this->Name = Name;
+		this->Id = Id;
+		this->Rank = 0;
+	}
+	
+	std::string GetName() {    //ãåòòåğ äëÿ âèâîäó name
+		return Name;
+	}
+
+	int GetId() {     //ãåòòåğ äëÿ âèâîäó id
+		return Id;
+	}
+
+	int GetRank() {     //ãåòòåğ äëÿ âèâîäó Rank
+		return Rank;
+	}
+
+	void SetName(std::string Name) {    //cåòòåğ äëÿ ââîäó name
+		this->Name = Name;
+	}
+
+	int SetId(int Id) {     //ñåòòåğ äëÿ ââîäó id
+		return Id;
+	}
+
+void SetRank(int Rank) {    
+	this->Rank=Rank;
+	}
+
+	
 };

@@ -1,26 +1,118 @@
 #pragma once
 #include<iostream>
+#include<vector>
+#include "Players.h"
+#include "Team.h"
 class PlayerManager
 {
-	void CreatePlayer(std::string Name, std::string Id, int Rank)       //створити гравц€;
+	std::vector<Players> player_list;//створюЇмо список гравц≥в в вектор≥
+public:
+
+	void CreatePlayer(int Id, std::string Name)       //створити гравц€;
 	{
+		Players player(Id, Name);
+
+		player_list.push_back(player);//записуЇмо гравц€ в к≥нець вектору
+	}
+
+	Players GetPlayerByName(std::string player_name)	  //повернути гравц€ по ≥мен≥
+	{//€кщо ≥м'€ Ї в списку то повертамо гравц€
+		for (Players element : player_list) {
+			if (element.GetName() == player_name) {
+				return element;
+			}
+
+		}
+
+	}
+
+	Players GetPlayerById(int player_id) //повернути гравц€ по ≥д
+	{//€кщо id Ї в списку то повертамо гравц€
+
+		for (Players element : player_list) {
+			if (element.GetId() == player_id) {
+				return element;
+			}
+
+		}
+
+	}
+
+	void DeletePlayer(std::string name_player_del) // видалити гравц€
+	{//€кщо в вектор≥ Ї дане ≥м'€ то видал€Їмо гравц€ на цьому м≥сц≥
+
+
+		int kounter = 0;//л≥чильник
+		for (Players element : player_list) {
+			++kounter;
+			if (element.GetName() == name_player_del) {
+
+				player_list.erase(player_list.begin() + kounter);
+
+			}
+			else {
+				std::cout << "ERROR - Player not found !\n";
+
+			}
+		}
+	}
+
+
+	void ShowPlayerInfo(Players player) // виводить ≥нф про гравц€
+	{//€кщо дане ≥м'€ ≥снуЇ то виводить ≥нформац≥ю про цього гравц€
+
+		std::cout << " --PLAYER-- \n";
+		std::cout << "   Player id: " << player.GetId() << std::endl;
+		std::cout << "   Player name: " << player.GetName() << std::endl;
+		std::cout << "   Player Rank: " << player.GetRank() << std::endl ;
+
 
 
 	}
-	void GetPlayerByName(std::string args)	  //показати гравц€ по ≥мен≥
-	{
+
+	auto &GetPlayerList() {    //геттер 
+		return player_list;
+
 
 	}
-	void GetPlayerById(std::string args) //показати гравц€ по ≥д
-	{
 
+	auto AddRank(Team& team) {
+		
+		for (int i = 0; i < 5; i++) {
+			auto list = team.GetTeamList();
+			int id= list[i].first.GetId();
+		
+			for (auto& element : player_list) {
+				if (element.GetId() == id) {
+					element.SetRank(element.GetRank() + 25);
+				}
+		   }
+		}
 	}
-	void DeletePlayer(std::string args) // видалити гравц€
-	{
+	
+	auto MinusRank(Team& team) {
 
+		for (int i = 0; i < 5; i++) {
+			auto list = team.GetTeamList();
+			int id = list[i].first.GetId();
+	
+			for (auto& element : player_list) {
+				if (element.GetId() == id) {
+					element.SetRank(element.GetRank() - 25);
+				}
+			}
+		}
 	}
-	void ShowPlayerInfo(std::string args) // ≥нф про гравц€
-	{
 
+	auto ShowAllPlayersInfo() {
+		
+			for (auto& element : player_list) {
+				this->ShowPlayerInfo(element);
+		    }
+		
+		
+		
 	}
+
+
 };
