@@ -68,7 +68,7 @@ public:
 
 	}
 
-	auto GetHeroList() {
+	auto &GetHeroList() {
 		return hero_list;
 	}
 };

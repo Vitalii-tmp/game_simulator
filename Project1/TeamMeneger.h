@@ -12,63 +12,42 @@
 
 
 class TeamManager
-{//списки 2х команд
-	std::vector<std::pair < Players, Hero >> team_A;
-	std::vector<std::pair < Players, Hero >> team_B;
-
+{
 public:
-	auto GenerateNewTeam(PlayerManager pl, HeroManager hr) //створити team;
-	{
-		auto players_list = pl.GetPlayerList(); //список гравців
-		auto heroes_list = hr.GetHeroList(); //список героїв
 
-		std::vector<std::pair < Players, Hero >> tmp; //списоктимчасових гравців з героями
-		std::pair < Players, Hero > memb;
-		for (int i = 0; i < 10; ++i) {
+	auto GenerateNewTeam(std::vector<Players>& players_list, std::vector<Hero>&  heroes_list) //створити team;
+	{
+	
+
+		std::vector<std::pair < Players, Hero >> team; //списоктимчасових гравців з героями
+		
+		for (int i = 0; i < 5; ++i) {
+			
+			std::pair < Players, Hero > memb;
 			int kounter_pl = rand() % players_list.size();//вибираєм рандомний індекс гравця
 			int kounter_hr = rand() % heroes_list.size();//вибираєм рандомний індекс героя
 
-			//заповнюємо тимчасовий список гравців з героями
+			//заповнюємо  список гравців з героями
 			memb.second = heroes_list[kounter_hr];
 			memb.first = players_list[kounter_pl];
-			tmp.push_back(memb);
+			team.push_back(memb);
 
 			//видаляємо вже вибраних персонажа і героя
 			players_list.erase(players_list.begin() + kounter_pl);
 			heroes_list.erase(heroes_list.begin() + kounter_hr);
 		}
 
+		
 
 
-		for (int i = 0; i < 10; ++i) {
-			int kounter_member = rand() % tmp.size();//вибираєм рандомний індекс member з тимчасово списку гравців з героями
-			if (i < 5) {
-				team_A.push_back(tmp[kounter_member]);
-			}
-			if (i >= 5) {
-				team_B.push_back(tmp[kounter_member]);
-			}
-
-
-			//видаляємо вже вибраних персонажа і героя з тимчасового списку
-			tmp.erase(tmp.begin() + kounter_member);
-
-
-
-		}
-
-
-		Team first("team_A", team_A);
-		Team second("team_B", team_B);
-		std::vector <Team> teams;
-		teams.push_back(first);
-		teams.push_back(second);
-
-		return teams ;
+		Team first("team_a" , team);
+		
+		return first; 
+	
 
 	}
 
-	void ShowTeamsInfo(Team team) {
+	void ShowTeamsInfo(Team& team) {
 		PlayerManager tmp;
 		HeroManager tempr;
 		std::vector<std::pair < Players, Hero >> aaa;
@@ -82,7 +61,7 @@ public:
 		}
 	}
 
-	int hp_of_team(Team team) {
+	int hp_of_team(Team& team) {
 		std::vector<std::pair < Players, Hero >> tmp;
 		tmp = team.GetTeamList();
 		int Team_hp=0;
@@ -94,7 +73,7 @@ public:
 		return Team_hp;
 	}
 
-	int damage_of_team(Team team) {
+	int damage_of_team(Team& team) {
 	
 		std::vector<std::pair < Players, Hero >> tmp;
 		tmp = team.GetTeamList();
@@ -106,6 +85,8 @@ public:
 		}
 		return Team_damage;
 	}
+
+	
 
 };
 

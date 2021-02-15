@@ -104,10 +104,25 @@ int main() {
 	GameManager game;
 	HeroManager hero_mn;
 	PlayerManager pl_mn;
-	game.PerformGameSession(pl_mn, hero_mn);
 	
+	for (int i = 0; i < 10; i++) {          //створюємо гравців
+		pl_mn.CreatePlayer(i, "player" + std::to_string(i));
+	}
+	//int Id, int HP, int Damage, std::string Name)
+					   //створюємо героїв
+	for (int i = 0; i < 10; i++) {
+		hero_mn.CreateHero(i + 10, rand() % 150 + i, rand() % 100 + i, "Hero" + std::to_string(i));
+	}
 
+	int session;
+	std::cout << "Enter the number of sessions: ";
+	std::cin >> session;
+	for (int i = 0; i < session; i++) {
+		std::cout << "_________________________Session _ " << i + 1 << " _________________________\n\n\n";
+		game.PerformGameSession(pl_mn, hero_mn);
+		std::cout << "------------------->Players after game:\n";
+		pl_mn.ShowAllPlayersInfo();
+	}
 
-	_getch;
 	return 0;
 }

@@ -30,8 +30,16 @@ public:
 	std::vector<std::pair<Players, Hero>> GetTeamList() {
 		return team_list;
 	}
-
 	
+	void fill_team(Players player, Hero hero) {
+		std::make_pair(player, hero);
+		team_list.push_back(std::make_pair(player, hero));
+	}
+
+	auto &GetThisTeam() {
+		return this->team_list;
+	}
 	
 };
+
 

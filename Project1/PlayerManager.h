@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 #include "Players.h"
+#include "Team.h"
 class PlayerManager
 {
 	std::vector<Players> player_list;//створюємо список гравців в векторі
@@ -67,11 +68,51 @@ public:
 
 
 
-
-
 	}
 
-	auto GetPlayerList() {    //геттер 
+	auto &GetPlayerList() {    //геттер 
 		return player_list;
+
+
 	}
+
+	auto AddRank(Team& team) {
+		
+		for (int i = 0; i < 5; i++) {
+			auto list = team.GetTeamList();
+			int id= list[i].first.GetId();
+		
+			for (auto& element : player_list) {
+				if (element.GetId() == id) {
+					element.SetRank(element.GetRank() + 25);
+				}
+		   }
+		}
+	}
+	
+	auto MinusRank(Team& team) {
+
+		for (int i = 0; i < 5; i++) {
+			auto list = team.GetTeamList();
+			int id = list[i].first.GetId();
+	
+			for (auto& element : player_list) {
+				if (element.GetId() == id) {
+					element.SetRank(element.GetRank() - 25);
+				}
+			}
+		}
+	}
+
+	auto ShowAllPlayersInfo() {
+		
+			for (auto& element : player_list) {
+				this->ShowPlayerInfo(element);
+		    }
+		
+		
+		
+	}
+
+
 };

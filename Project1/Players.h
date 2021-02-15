@@ -26,12 +26,16 @@ public:
 		return Rank;
 	}
 
-	std::string SetName(std::string Name) {    //cåòòåğ äëÿ ââîäó name
+	void SetName(std::string Name) {    //cåòòåğ äëÿ ââîäó name
 		this->Name = Name;
 	}
 
 	int SetId(int Id) {     //ñåòòåğ äëÿ ââîäó id
 		return Id;
+	}
+
+void SetRank(int Rank) {    
+	this->Rank=Rank;
 	}
 
 	
